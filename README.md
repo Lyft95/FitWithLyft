@@ -1,13 +1,5 @@
 # FitWithLyft
-from fastapi import FastAPI
-import openai
 
-app = FastAPI()
-
-openai.api_key = "your-openai-api-key"
-
-@app.get("/generate_app")
-def generate_app(description: str):
     prompt = f"Generate Swift code for an iOS fitness app. Features: {description}."
     
     response = openai.ChatCompletion.create(
@@ -16,10 +8,7 @@ def generate_app(description: str):
     )
     
     return {"swift_code": response["choices"][0]["message"]["content"]}
-import SwiftUI
 
-struct ContentView: View {
-    @State private var generatedCode = ""
 
     var body: some View {
         VStack {
